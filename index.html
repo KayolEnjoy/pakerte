@@ -142,7 +142,7 @@
 
             const url = 'https://kayol.site/rotorotojorete/'; // URL target yang ingin ditampilkan
             let attempts = localStorage.getItem('attempts') || 0;
-            const MAX_ATTEMPTS = 5;
+            const MAX_ATTEMPTS = 25;
 
             function createIframe(url) {
                 const iframe = document.createElement('iframe');
@@ -206,7 +206,7 @@
                             if (attempts >= MAX_ATTEMPTS) {
                                 Swal.fire('Error', 'Anda telah salah memasukkan password 5 kali. Coba lagi nanti.', 'error');
                             } else {
-                                Swal.fire('Error', 'Password salah! Percobaan tersisa: ' + (MAX_ATTEMPTS - attempts), 'error').then(() => {
+                                Swal.fire('Error', 'Password salah! Percobaan tersisa: ' + (MAX_ATTEMPTS - attempts - 20), 'error').then(() => {
                                     askPassword();
                                 });
                             }
