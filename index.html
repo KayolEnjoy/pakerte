@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplikasi Pak RT | halaman data warga</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e90ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Aplikasi Pak RT">
     <style>
         * {
             margin: 0;
@@ -116,6 +121,18 @@
     <div id="hiddenContainer"></div>
 
     <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(function (registration) {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(function (error) {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             const welcomeScreen = document.getElementById('welcomeScreen');
             const content = document.getElementById('content');
